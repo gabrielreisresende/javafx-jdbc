@@ -76,12 +76,11 @@ public class DepartmentFormController implements Initializable {
 		} catch (DbException e) {
 			Alerts.showAlert("Error saving object", null, e.getMessage(), AlertType.ERROR);
 		}
-
 	}
 
 	private void notifyDataChangeListeners() {
 		for (DataChangeListener listener : dataChangeListeners) {
-			listener.onDataChange();
+			listener.onDataChanged();
 		}
 	}
 
@@ -100,6 +99,7 @@ public class DepartmentFormController implements Initializable {
 		if (exception.getErrors().size() > 0) {
 			throw exception;
 		}
+
 		return obj;
 	}
 
@@ -118,7 +118,7 @@ public class DepartmentFormController implements Initializable {
 		Constraints.setTextFieldMaxLength(txtName, 30);
 	}
 
-	public void updateFormDate() {
+	public void updateFormData() {
 		if (entity == null) {
 			throw new IllegalStateException("Entity was null");
 		}
